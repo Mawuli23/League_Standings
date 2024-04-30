@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Classements league</title>
+    <link rel="stylesheet" href="{% static 'css/style_standings.css' %}">
+</head>
+<body>
+    <h1>Classements league</h1>
+    <table>
+        <tr>
+            <th>Equipes</th>
+            <th>MJ</th>
+            <th>V</th>
+            <th>N</th>
+            <th>D</th>
+            <th>PTS</th>
+            <th>BP</th>
+            <th>BC</th>
+            <th>DB</th>
+        </tr>
+        {% for team in teams %}
+            <tr>
+                <td><a href="{% url 'team_detail' team.id %}">{{team.name}}</a></td>
+                <td>{{team.games_played}}</td>
+                <td>{{team.wins}}</td>
+                <td>{{team.draws}}</td>
+                <td>{{team.losses}}</td>
+                <td>{{team.points}}</td>
+                <td>{{team.goals_for}}</td>
+                <td>{{team.goals_against}}</td>
+                <td>{{team.goals_difference}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

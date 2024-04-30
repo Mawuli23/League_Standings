@@ -1,0 +1,56 @@
+body {
+    display: flex;            /* Utilise Flexbox pour centrer le contenu */
+    justify-content: center;  /* Centre horizontalement les éléments enfants */          /* Donne une hauteur totale au body */
+    margin: 0;                /* Enlève les marges par défaut du body */
+    flex-direction: row;
+}
+
+.addmatch{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #004d99;
+    font-size: 2.5rem;
+}
+
+.addmatch form p {
+    display: flex;            /* Rend chaque paragraphe un flex container */
+    align-items: center;      /* Centre les éléments verticalement */
+    margin-bottom: 10px;      /* Espacement entre chaque champ */
+}
+
+.addmatch form p label {
+    font-size: 1.5rem;
+    margin-right: 10px;       /* Espacement entre le label et l'élément de formulaire */
+    white-space: nowrap;      /* Empêche le texte du label de passer à la ligne */
+}
+
+.addmatch form p input,
+.addmatch form p select {
+    height: 2.5rem;
+    flex: 1;                  /* Prend tout l'espace restant */
+    min-width: 0;             /* Empêche le débordement du flex item */
+}
+
+.addmatch form button {
+    width: 100%;
+    background-color: #004d99;
+    color: whitesmoke;
+    margin-top: 20px; 
+    border-radius: 4px;
+    border: none;
+    font-size: 1.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+}
+
+
+#message-container {
+    font-size: 2rem;
+}
+
