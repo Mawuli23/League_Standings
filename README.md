@@ -4,7 +4,13 @@ Cette application permet de faire des classements des équipes de foot après un
 
 Pour l'utiliser, télécharge le dépôt.
 
-créer un superutilisateur
+Se positionner dans le votre dossier de travail.
+
+Installer les paquages nécessaire
+
+créer un superutilisateur : python manage.py createsperuser
+
+lancer l'app : python manage.py runserver et se rendre sur le lien indiqué
 
 pour ajouter des équipes il faut le faire dans l'interface administrateur en allant sur localhost:port/admin
 
