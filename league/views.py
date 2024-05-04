@@ -23,7 +23,7 @@ def add_match(request):
             return render(request, 'league/add_match.html', context={'form': form})
     else:
         form = MatchForm()
-    return render(request, 'league/add_match.html', context={'form': form})
+        return render(request, 'league/add_match.html', context={'form': form})
 
 
 def team_detail(request, team_id):
