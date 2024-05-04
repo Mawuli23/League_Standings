@@ -2,20 +2,39 @@
 
 Cette application permet de faire des classements des équipes de foot après une partie.
 
-Pour l'utiliser, télécharge le dépôt.
+## Pour l'utiliser:
 
-Se positionner dans le votre dossier de travail.
+1. Télécharge le dépôt.
 
-Installer les paquages nécessaire
+``` bash
+git clone https://github.com/Mawuli23/League_Standings.git
+```
 
-créer un superutilisateur : python manage.py createsperuser
+2. Se positionner dans le votre dossier de travail et Installer les paquages nécessaire
 
-lancer l'app : python manage.py runserver et se rendre sur le lien indiqué
+``` bash
+pip install -r Requierements.txt
+```
 
-pour ajouter des équipes il faut le faire dans l'interface administrateur en allant sur localhost:port/admin
+3. lancer l'app : 
+``` bash
+python manage.py runserver
+```
+et se rendre sur le lien indiqué
 
-pour ajouter un match localhost:port/add/
+## Pour créer un superutilisateur
+``` bash
+python manage.py createsuperuser
+```
 
-en cliquant sur une équipe vous avez les détails des l'ensemble des matchs jouer par ce dernier
+## Ajout d'équipes 
+Il faut le faire dans l'interface administrateur en allant sur `localhost:port/admin`
+
+## Ajout de match
+Se fait via: `localhost:port/add/`
+
+## Tips:
+
+- en cliquant sur une équipe vous avez les détails des l'ensemble des matchs jouer par ce dernier
 
 
