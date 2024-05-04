@@ -8,7 +8,7 @@ from .forms import MatchForm
 
 
 def standings(request):
-    teams = Team.objects.order_by('-points', '-goals_difference', '-name')
+    teams = Team.objects.order_by('-points', '-goals_difference', '-goals_for')
     return render(request, 'league/standings.html', context={'teams': teams})
 
 
