@@ -56,17 +56,6 @@ def generate_matches(request):
                         away_score=None,
                         played=False
                     )
-                    if match_type == 'double':
-                        # Create the reverse match for double-leg
-                        Match.objects.create(
-                            home_team=away_team,
-                            away_team=home_team,
-                            date=today,  # You might want to set a different date for the return leg
-                            home_score=None,
-                            away_score=None,
-                            played=False
-                        )
-
             return redirect('list_and_update_matches')
     else:
         form = MatchTypeForm()
