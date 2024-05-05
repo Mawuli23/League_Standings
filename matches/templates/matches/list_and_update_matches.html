@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{% static 'matches/css/style_list_update.css' %}"
+    />
+    <title>All Matches</title>
+  </head>
+  <body>
+    <h1>Liste des matchs, résultats et mise à jour des scores</h1>
+    <div class="container_affichage">
+      {% for match in matches %}
+
+      <form method="post" action="{% url 'list_and_update_matches' match.id %}">
+        {% csrf_token %}
+        <div class="aller_retour">
+          <div class="team_goals_aff">
+            <input type="hidden" name="match_id" value="{{ match.id }}" />
+
+            <div>
+              <span style="font-weight: bold;">{{ match.home_team.name }}</span>
+
+              <input
+                type="number"
+                name="home_score"
+                value="{{ match.home_score }}"
+              />
+            </div>
+            <div>
+              <span>{{ match.away_team.name }}</span>
+              <input
+                type="number"
+                name="away_score"
+                value="{{ match.away_score }}"
+              />
+            </div>
+          </div>
+          <div class="update_button">
+            <button type="submit">Update Score</button>
+          </div>
+        </div>
+      </form>
+      {% endfor %}
+
+      <!--
+    <ul>
+      {% for match in matches %}
+      <li>
+        <form
+          method="post"
+          action="{% url 'list_and_update_matches' match.id %}"
+        >
+          {% csrf_token %}
+          <input type="hidden" name="match_id" value="{{ match.id }}" />
+          Home Score {{ match.home_team.name }}:
+          <input
+            type="number"
+            name="home_score"
+            value="{{ match.home_score }}"
+          />
+          Away Score {{ match.away_team.name }}:
+          <input
+            type="number"
+            name="away_score"
+            value="{{ match.away_score }}"
+          />
+          <button type="submit">Update Score</button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>-->
+    </div>
+  </body>
+</html>
