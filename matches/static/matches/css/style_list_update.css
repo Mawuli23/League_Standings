@@ -1,0 +1,73 @@
+span{
+    padding-right: 10px;
+}
+
+h1{
+    text-align: center;
+}
+
+
+.aller_retour {
+    padding: 10px 10px;
+    border: 1px solid rgb(67, 56, 56);
+    border-radius: 3px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    font-size: 1.3rem;
+    flex-wrap: wrap;
+
+}
+
+.container_affichage{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items:flex-start;
+    padding: 20px 20px
+}
+
+.team_goals_aff{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.team_goals_aff div {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    /*width: 50%; */
+}
+
+input[type="number"] {
+    padding: 5px;
+    border: 1px solid #9b9393;
+    border-radius: 4px;
+    width: 40%;
+}
+
+
+.update_button {
+    padding: 10px;
+    justify-content: flex-end;
+}
+
+
+button {
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; 
+}
+
+button:hover {
+    background-color: #0056b3;
+}
