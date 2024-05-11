@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
     <title>League Matches</title>
     <style>
       /* Base styling for the body */
@@ -73,6 +75,9 @@ a:hover {
       <li>No Teams in the {{league.name}} league yet.</li>
       {% endfor %}
     </ul>
-    <a href="{% url 'allLeague' %}">Back to League Details</a>
+    <div class="backdir">
+      <a href="{% url 'allLeague' %}">Back to League Details</a>
+      <a href="{% url 'index' %}">Back to home Page</a>
+    </div>
   </body>
 </html>
