@@ -127,13 +127,15 @@ class MatchListView(ListView):
     context_object_name = 'matches'
     template_name = 'matches/leagueMatches.html'
 
+    def get_queryset(self):
+        league_id = self.kwargs.get('league_id')
+        return Match.objects.filter(league__id=league_id).order_by('-date')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['league'] = League.objects.get(pk=self.kwargs.get('league_id'))
+        league_id = self.kwargs.get('league_id')
+        context['league'] = get_object_or_404(League, pk=league_id)
         return context
-
-    def get_queryset(self):
-        return Match.objects.all().order_by('-date')
 
 
 class TeamListView(ListView):
@@ -141,13 +143,15 @@ class TeamListView(ListView):
     context_object_name = 'teams'
     template_name = 'matches/leagueTeams.html'
 
+    def get_queryset(self):
+        league_id = self.kwargs.get('league_id')
+        return Team.objects.filter(league__id=league_id).order_by('name')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['league'] = League.objects.get(pk=self.kwargs.get('league_id'))
+        league_id = self.kwargs.get('league_id')
+        context['league'] = get_object_or_404(League, pk=league_id)
         return context
-
-    def get_queryset(self):
-        return Team.objects.all().order_by('name')
 
 
 class ListAndUpdateMatchesView(View):
