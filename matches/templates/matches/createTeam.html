@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
+    <title>Manage Teams</title>
+  </head>
+  <body>
+    <div class="container createTeam">
+      <h1>Manage Teams in {{ league.name }}</h1>
+
+      <form method="post" class="form-container">
+        {% csrf_token %} {% for field in form %}
+        <div class="form-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }} {% if field.help_text %}
+          <small class="form-text text-muted">{{ field.help_text }}</small>
+          {% endif %} {% for error in field.errors %}
+          <div class="error" style="color: red">{{ error }}</div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+        <button type="submit">Add Team</button>
+      </form>
+      <a href="{% url 'allLeague' %}">Back to League Details</a>
+    </div>
+  </body>
+</html>

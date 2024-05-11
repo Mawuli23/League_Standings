@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
+    <title>{{ league.name }} Standings</title>
+  </head>
+  <body>
+    <div class="container allLeague">
+      <h1>All Leagues Standings</h1>
+      {% for league in leagues %}
+      <h2>{{ league.name }}</h2>
+      <table>
+        <tr>
+          <th>Teams</th>
+          <th>PTS</th>
+          <th>GF</th>
+          <th>GA</th>
+          <th>GD</th>
+        </tr>
+
+        {% for team in league.sorted_teams %}
+        <tr>
+          <td><span>{{ team.name }}</span></td>
+          <td><b>{{ team.total_points }}</b></td>
+          <td>{{ team.total_goals_for }}</td>
+          <td>{{ team.total_goals_against }}</td>
+          <td>{{ team.goal_differences }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      {% empty %}
+      <p>No leagues available.</p>
+      {% endfor %}
+      <div class="backdir">
+        <a href="{% url 'allLeague' %}">Back to League Details</a>
+        <a href="{% url 'index' %}">Back to home Page</a>
+      </div>
+    </div>
+  </body>
+</html>

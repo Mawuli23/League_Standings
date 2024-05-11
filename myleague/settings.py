@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-9d74!ii#i-wddnvu7#+yvq&ck)$=&j98x%fmi)r3=rq+5f%7-1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', "b542-62-34-31-110.ngrok-free.app"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', "02af-62-34-31-110.ngrok-free.app"]
 
 
 # Application definition
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "livereload",
     "django.contrib.staticfiles",
     "matches",
 ]
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "livereload.middleware.LiveReloadScript",
 ]
 
 ROOT_URLCONF = "myleague.urls"

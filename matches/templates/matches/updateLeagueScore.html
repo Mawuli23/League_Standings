@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'matches/css/style_updateScore.css' %}" />
+    <title>Update Match Scores</title>
+</head>
+<body>
+    <h1>Update Matches Score for {{ league.name }} league</h1> 
+    <a href="{% url 'allLeague' %}">Back to League Details</a>  
+    <div class="container_affichage">
+      {% for match in matches %}
+
+      <form method="post" action="{% url 'updateLeagueMatches' league_id=league.id %}">
+        {% csrf_token %}
+        <div class="aller_retour">
+          {{form.as_p}}
+          <div class="team_goals_aff">
+            <input type="hidden" name="match_id" value="{{ match.id }}" />
+
+            <div>
+              <span style="font-weight: bold;">{{ match.home_team }}</span>
+
+              <input
+                type="number"
+                name="home_score"
+                value="{{ match.home_score }}"
+              />
+            </div>
+            <div>
+              <span>{{ match.away_team }}</span>
+              <input
+                type="number"
+                name="away_score"
+                value="{{ match.away_score }}"
+              />
+            </div>
+          </div>
+          <div class="update_button">
+            <button type="submit">Update Score</button>
+          </div>
+        </div>
+      </form>
+      {% endfor %}
+    </div> 
+      
+
+</body>
+</html>

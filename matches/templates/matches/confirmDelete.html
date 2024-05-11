@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div class="container confirmDelete">
+      <h1>Are you sure you want to delete {{ object.name }} ?</h1>
+      <form method="post">
+        {% csrf_token %}
+        <div class="confirmSub">
+          <input type="submit" value="Confirm" />
+          <a href="{% url 'allLeague' %}">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

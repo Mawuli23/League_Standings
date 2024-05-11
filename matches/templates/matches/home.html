@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
+    <title>page accueil</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to Your Sports League Manager</h1>
+    </header>
+
+    <section id="create-league">
+      <h2>Create a League</h2>
+      <p>Start by creating a new league for your sport of choice.</p>
+      <a href="{% url 'createLeague' %}">Create a League</a>
+    </section>
+
+    <section id="manage-league">
+      <h2>Manage a League</h2>
+      <p>
+        Manage your league by adding, generating and following the standings of
+        the league.
+      </p>
+      <a href="{% url 'allLeague' %}">Manage a League</a>
+    </section>
+
+    <section id="track-rankings">
+      <h2>Track Rankings</h2>
+      <p>Follow the rankings after each match to see who leads.</p>
+      <a href="{% url 'allLeagueStandings' %}">Track Rankings</a>
+    </section> 
+
+    <footer>
+      <p>Contact us at teamleader@kabacha.org</p>
+    </footer>
+  </body>
+</html>
