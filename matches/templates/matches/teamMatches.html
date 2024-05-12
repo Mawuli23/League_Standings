@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Matches for {{ team.name }} in {{ league.name }}</h1>
+      <ul>
+        {% for match in matches %}
+        <li>
+          {{ match.date }}: {{ match.home_team.name }} vs {{
+          match.away_team.name }} - {{ match.home_score }}:{{ match.away_score
+          }}
+        </li>
+        {% empty %}
+        <li>No matches found.</li>
+        {% endfor %}
+      </ul>
+      <a href="{% url 'allLeague' %}">Back to League Details</a>
+    </div>
+  </body>
+</html>

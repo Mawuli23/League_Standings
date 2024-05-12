@@ -97,7 +97,7 @@ td b {
         </tr>
         {% for team in teams %}
         <tr>
-          <td>{{ team.name }}</td>
+          <td><a href="{% url 'teamMatches' league.id team.id %}">{{ team.name }}</a></td>
           <td>{{ team.games_played }}</td>
           <td>{{ team.wins }}</td>
           <td>{{ team.draws }}</td>
