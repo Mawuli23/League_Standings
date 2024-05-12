@@ -643,6 +643,133 @@ a:hover {
     transition: all 0.3s ease;
   }
 
+/**--team liste--**/
+
+.teamListLeague{
+    max-width: 600px;
+  }
+
+.teamListLeague h1 {
+    color: #0e4780;
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.teamListLeague ul {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: auto;
+}
+
+.teamListLeague ul li {
+    background: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.teamListLeague ul li span{
+    margin-right: 1rem;
+    color: blue;
+}
+
+.teamListLeague ul li{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.teamListLeague ul li:last-child {
+    margin-bottom: 0;
+}
+
+
+/* -- update score -- */
+
+.updateScore{
+    max-width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items:flex-start;
+    padding: 20px 20px
+}
+
+.updateScore h1{
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.updateScore form .aller_retour .team_goals_aff{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.updateScore form .aller_retour .team_goals_aff div {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    /*width: 50%; */
+}
+
+.updateScore form .aller_retour input[type="number"] {
+    padding: 5px;
+    border: 1px solid #9b9393;
+    border-radius: 4px;
+    width: 40%;
+}
+
+.updateScore form .aller_retour {
+    padding: 10px 10px;
+    border: 1px solid rgb(67, 56, 56);
+    border-radius: 3px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    font-size: 1.3rem;
+    flex-wrap: wrap;
+
+}
+
+.updateScore form .update_button {
+    padding: 10px;
+    justify-content: flex-end; 
+}
+
+.updateScore form .update_button  button {
+    padding: 10px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; 
+}
+
+.updateScore form .update_button button:hover {
+    background-color: #0056b3;
+}
+
+.updateScore .backdir{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
 @media screen and (max-width: 768px) {
   .leagueall_detail ul li {
     flex-direction: column;

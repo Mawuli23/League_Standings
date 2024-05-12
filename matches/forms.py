@@ -1,5 +1,4 @@
 from django import forms
-from django.core.exceptions import ValidationError
 from .models import Team, Match, League
 
 
@@ -13,7 +12,6 @@ class TeamForm(forms.ModelForm):
         league = cleaned_data.get('league')
 
         if league:
-            # Check the current number of teams in the league
             current_teams_count = Team.objects.filter(league=league).count()
             if current_teams_count >= league.number_of_teams:
                 raise forms.ValidationError({
@@ -34,5 +32,4 @@ class ScoreUpdateForm(forms.ModelForm):
     class Meta:
         model = Match
         fields = ['home_score', 'away_score', 'completed']
-
 

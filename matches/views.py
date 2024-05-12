@@ -4,12 +4,13 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from itertools import permutations, combinations
 from django.db.models import F, Sum, Count
+from django.contrib import messages
 from django.forms import modelformset_factory
 import datetime
 from django.urls import reverse_lazy, reverse
 from .models import League, Team, Match
 from django.views.generic import View, ListView, TemplateView, CreateView, FormView, DeleteView, UpdateView
-from .forms import TeamForm, MatchTypeForm, ScoreUpdateForm
+from .forms import MatchTypeForm, ScoreUpdateForm, TeamForm
 
 
 class HomePageView(TemplateView):
@@ -26,7 +27,7 @@ class CreateLeagueView(CreateView):
 class DeleteLeagueView(DeleteView):
     model = League
     template_name = 'matches/confirmDelete.html'
-    success_url = reverse_lazy('allLeague')  # Redirect to the league listing after deletion
+    success_url = reverse_lazy('allLeague')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -44,11 +45,9 @@ class CreateTeamView(CreateView):
     model = Team
     form_class = TeamForm
     template_name = 'matches/createTeam.html'
-    #fields = ['name', 'league']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Fetch the league using the league_id from the URL parameters
         league_id = self.kwargs.get('league_id')
         if league_id:
             context['league'] = League.objects.get(id=league_id)
@@ -91,10 +90,8 @@ class GenerateMatchesView(FormView):
         match_type = form.cleaned_data['match_type']
         teams = list(league.teams.all())
 
-        # Reset all matches for the season
         Match.objects.filter(league=league).delete()
 
-        # Optionally reset team stats for new season
         for team in teams:
             team.reset_stats()
 
@@ -103,15 +100,14 @@ class GenerateMatchesView(FormView):
         else:
             match_pairs = combinations(teams, 2)
 
-        # Use transaction.atomic to ensure all operations are done at once
         with transaction.atomic():
             for home_team, away_team in match_pairs:
                 Match.objects.create(
                     league=league,
                     home_team=home_team,
                     away_team=away_team,
-                    date=datetime.date.today(),  # Placeholder date
-                    home_score=0,  # Initialized scores to 0
+                    date=datetime.date.today(),
+                    home_score=0,
                     away_score=0,
                     completed=False
                 )
@@ -154,6 +150,25 @@ class TeamListView(ListView):
         return context
 
 
+class TeamMatchesListView(ListView):
+    model = Match
+    template_name = 'matches/teamMatches.html'
+    context_object_name = 'matches'
+
+    def get_queryset(self):
+        league_id = self.kwargs.get('league_id')
+        team_id = self.kwargs.get('team_id')
+        league = get_object_or_404(League, pk=league_id)
+        team = get_object_or_404(Team, pk=team_id, league=league)
+        return Match.objects.filter(league=league).filter(away_team=team, home_team=team).order_by('-date')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['league'] = get_object_or_404(League, pk=self.kwargs.get('league_id'))
+        context['team'] = get_object_or_404(Team, pk=self.kwargs.get('team_id'))
+        return context
+
+
 class ListAndUpdateMatchesView(View):
     template_name = 'matches/updateLeagueScore.html'
 
@@ -168,7 +183,7 @@ class ListAndUpdateMatchesView(View):
         league = get_object_or_404(League, pk=league_id)
         match_id = request.POST.get('match_id')
         if match_id:
-            match = get_object_or_404(Match, pk=match_id, league=league)  # Ensure match belongs to the correct league
+            match = get_object_or_404(Match, pk=match_id, league=league)
             form = ScoreUpdateForm(request.POST, instance=match)
             if form.is_valid():
                 match.completed = True
@@ -203,14 +218,11 @@ class AllLeagueStandingsView(ListView):
     context_object_name = 'leagues'
 
     def get_queryset(self):
-        # Annotate each league with team counts if needed (optional)
         leagues = League.objects.annotate(
             teams_count=Count('teams')
         ).prefetch_related('teams')
 
-        # Ensure that we don't directly modify league's team set
         for league in leagues:
-            # You can sort or annotate the teams' queryset without assigning it back to league.teams
             league.sorted_teams = league.teams.annotate(
                 total_points=Sum('points'),
                 total_goals_for=Sum('goals_for'),

@@ -20,6 +20,11 @@
         {% csrf_token %} {{ form.as_p }}
         <button type="submit">Generate Matches</button>
       </form>
+      <div class="backdir">
+        <a href="{% url 'allLeague' %}">Back to League Details</a>
+        <a href="{% url 'index' %}">Back to home Page</a>
+      </div>
     </div>
+
   </body>
 </html>

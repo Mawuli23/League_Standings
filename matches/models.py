@@ -2,7 +2,6 @@ from django.core.validators import MinValueValidator
 from django.db import models
 
 
-# Create your models here.
 class League(models.Model):
     name = models.CharField(max_length=50, unique=True)
     number_of_teams = models.IntegerField()
@@ -101,3 +100,4 @@ class Match(models.Model):
 
     def __str__(self):
         return f"{self.home_team} vs {self.away_team} on {self.date}"
+
