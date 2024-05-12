@@ -204,7 +204,7 @@ class LeagueStandingsView(ListView):
 
     def get_queryset(self):
         league_id = self.kwargs.get('league_id')
-        return Team.objects.filter(league__id=league_id).order_by('-points', '-goals_for', 'goals_against')
+        return Team.objects.filter(league__id=league_id).order_by('-points', '-goal_difference', '-goals_for', 'name')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -228,6 +228,6 @@ class AllLeagueStandingsView(ListView):
                 total_goals_for=Sum('goals_for'),
                 total_goals_against=Sum('goals_against'),
                 goal_differences=F('total_goals_for') - F('total_goals_against')
-            ).order_by('-total_points', '-goal_difference', 'name')
+            ).order_by('-total_points', '-goal_difference', '-total_goals_for', 'name')
 
         return leagues
