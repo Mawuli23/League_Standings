@@ -51,7 +51,12 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+<<<<<<< HEAD
     "livereload.middleware.LiveReloadScript",
+=======
+    # "livereload.middleware.LiveReloadScript",
+]
+>>>>>>> 254c3a9408f2cbc36bea8a24d8d8ee13988d94ff
 
 ]
 #"livereload.middleware.LiveReloadScript",
