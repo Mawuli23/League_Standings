@@ -1,10 +1,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 @import "reset.css";
 
-/* -- home page --*/
 body {
   color: #360303;
   background-color: #f4f4f4;
+}
+
+.container {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  margin: auto;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+p {
+  font-size: 1.1rem;
+  padding-bottom: 0.9rem;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: green;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 header,
@@ -17,6 +60,7 @@ footer {
 header {
   background-color: #006400;
   color: white;
+  width: 100%;
 }
 
 section {
@@ -24,14 +68,13 @@ section {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 95%;
 }
 
 footer {
   background-color: #333;
   color: white;
-}
-footer p {
-  font-size: 1.1rem;
+  width: 100%;
 }
 
 #create-league,
@@ -39,54 +82,75 @@ footer p {
 #track-rankings {
   color: #444;
 }
-
-h1 {
-  font-size: 1.5rem;
+/*------------renvoi multiple---------------------*/
+.backdir {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
 
-h2 {
-  font-size: 1.4rem;
-  padding-bottom: 0.75rem;
-  color: #1b0202;
-  font-weight: bold;
-}
-
-p {
-  padding-bottom: 0.75rem;
-  font-size: 1rem;
-}
-
-a {
+.backdir a {
   text-decoration: none;
-  font-size: 1rem;
-  color: green;
-  font-weight: bold;
+  color: #007bff;
+  background-color: transparent;
+  margin: 5px;
+  padding: 8px 16px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  display: inline-block;
 }
 
-a:hover {
-  text-decoration: underline;
+.backdir a:hover {
+  background-color: #007bff;
+  color: white;
+  transition: all 0.3s ease;
 }
 
-/* --create league */
-
-.container {
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 20px;
-  width: 90%;
-  margin: auto;
+.createLeague .backdir a {
+  text-decoration: none;
+  color: #007bff;
+  background-color: transparent;
+  margin: 5px;
+  padding: 10px 15px;
+  border: 1px solid #ff0000;
+  border-radius: 4px;
+  display: inline-block;
+  flex-grow: 1;
 }
+.createLeague .backdir a:hover {
+  background-color: #ff0000;
+  color: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.createLeague .backdir button {
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  margin: 5px;
+  /*width: 100%;*/
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.createLeague .backdir button:hover {
+  background-color: #45a049;
+  color: #000;
+}
+
+/* ----------------- create a league----------------------*/
 
 .createLeague {
-  max-width: 600px;
-}
-
-.createLeague h1 {
-  text-align: center;
-  padding-bottom: 1rem;
-  font-weight: bold;
-  font-size: xx-large;
+  max-width: 700px;
+  width: 90%;
 }
 
 .createLeague a {
@@ -128,56 +192,19 @@ a:hover {
   border-radius: 4px;
 }
 
-.createLeague button {
-  background-color: #4caf50; /* Green */
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  font-size: 1.1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-top: 10px;
-  width: 100%;
-  font-weight: 500;
-}
-
-.createLeague button:hover {
-  background-color: #45a049;
-  color: #000;
-}
-
-.allLeague h1 {
-  text-align: center;
-  color: #4228d8;
-  font-size: 1.7rem;
-  font-weight: bold;
+/* ----------------- all standings----------------------*/
+.allLeague {
   margin-top: 1rem;
+  margin-bottom: 1rem;
+  max-width: 700px;
+  width: 100%;
 }
 
 .allLeague h2 {
-  color: #2f8009;
-  padding-top: 1.1rem;
+  text-align: left;
+  font-size: 1rem;
+  color: blue;
 }
-
-.allLeague .backdir a {
-    text-decoration: none;
-    color: #007bff;
-    background-color: transparent;
-    margin: 5px;
-    padding: 8px 16px;
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    display: inline-block;
-  }
-
-.allLeague .backdir a:hover {
-    background-color: #007bff;
-    color: white;
-    transition: all 0.3s ease;
-  }
 
 .allLeague table {
   width: 100%;
@@ -217,17 +244,21 @@ a:hover {
   font-weight: bold;
 }
 
-.allLeague .backdir {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1rem;
+.standings {
+  max-width: 1000px;
 }
 
+.standings h1 {
+  text-align: left;
+  color: blue;
+}
 
-
-/* --show league-- */
-
+/* ---------------- show league ------------- */
+.leagueall_detail {
+  margin-bottom: 2rem;
+  width: 80%;
+  border-radius: 4px;
+}
 .leagueall_detail h2 {
   color: #444;
   text-align: center;
@@ -288,74 +319,11 @@ a:hover {
   color: blue;
 }
 
-/* --create team-- */
-.createTeam .form-group {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.createTeam {
-  max-width: 600px;
-}
-
-.createTeam h1 {
-  font-size: 1.6rem;
-  text-align: center;
-  margin-bottom: 1rem;
-  font-weight: bold;
-  margin-top: 1rem;
+/* ----------add team ------------*/
+.createTeam form {
   margin-bottom: 1rem;
 }
-
-.createTeam a {
-  display: block;
-  margin-top: 1.5rem;
-}
-
-.createTeam input[type="text"],
-.createTeam input[type="email"],
-.createTeam input[type="number"],
-.createTeam textarea,
-.createTeam select {
-  flex-grow: 1;
-  padding: 8px 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.createTeam label {
-  flex-basis: 40%;
-  text-align: left;
-  font-size: 1.3rem;
-  padding-right: 0.9rem;
-  font-weight: bold;
-}
-
-.createTeam button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  font-size: 1.1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-top: 10px;
-  width: 100%;
-  font-weight: 500;
-}
-
-.createTeam button:hover {
-  background-color: #45a049;
-  color: #000;
-}
-
-/* delete confirm */
-
+/* -----------confirm delete-------------*/
 .confirmDelete {
   max-width: 600px;
 }
@@ -418,115 +386,66 @@ a:hover {
   justify-content: space-between;
 }
 
-/* --generate matches */
+.confirmDelete form {
+  margin-bottom: 2rem;
+}
 
-.generateMatch {
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 10px;
+/* -------------team list ------------------*/
+.teamListLeague {
+  max-width: 900px;
+  width: 75%;
+}
+
+.teamListLeague h1 {
+  color: #0e4780;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.teamListLeague ul {
+  list-style: none;
+  padding: 0;
   max-width: 600px;
+  margin: auto;
+  margin-bottom: 2rem;
 }
-.generateMatch form {
+
+.teamListLeague ul li {
   background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 80%;
-  margin-bottom: 30px;
-  padding: 10px 10px;
-}
-
-.generateMatch form label {
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 10px 0px;
-}
-
-.generateMatch h1 {
-  color: #1d29d8;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.generateMatch form p {
-  display: flex;
-  flex-direction: row;
-}
-
-.generateMatch button {
-  width: 100%;
-  background-color: #007bff;
-  color: white;
   padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.teamListLeague ul li span {
+  margin-right: 0.75rem;
+  color: blue;
+}
+
+.teamListLeague ul li .endSpan {
+  color: #000;
+  margin-right: 0rem;
+}
+
+.teamListLeague ul li .endSpanE {
+  margin-right: 0rem;
+}
+
+.teamListLeague ul li {
   font-size: 1.2rem;
-  margin-top: 1rem;
-}
-
-.generateMatch button:hover {
-  background-color: #0056b3;
-}
-
-/* -- league standing -- */
-.standings h1 {
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-  font-size: 1.6rem;
   font-weight: bold;
 }
 
-.standings a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-  margin-bottom: 20px;
-  display: inline-block;
+.teamListLeague ul li:last-child {
+  margin-bottom: 0;
 }
-
-.standings a:hover {
-  text-decoration: underline;
-}
-
-.standings table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.standings table th,
-.standings table td {
-  text-align: left;
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-}
-
-.standings table th {
-  background-color: #4caf50;
-  color: white;
-}
-
-.standings table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.standings table tr:nth-child(odd) {
-  background-color: #ffffff;
-}
-
-.standings table td b {
-  font-weight: bold;
-}
-
-/* --list match-- */
+/*-----------match list--------------*/
 .matchList {
   background-color: #fff;
   padding: 20px;
@@ -541,7 +460,7 @@ a:hover {
   text-align: center;
   color: #0933bd;
   margin-bottom: 20px;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
@@ -617,157 +536,120 @@ a:hover {
   transition: all 0.3s ease;
 }
 
+/* -------------------generate match-----------------------*/
 
-/* all */
-.backdir {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-  }
-
-  .backdir a {
-    text-decoration: none;
-    color: #007bff;
-    background-color: transparent;
-    margin: 5px;
-    padding: 8px 16px;
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    display: inline-block;
-  }
-
-
-.backdir a:hover {
-    background-color: #007bff;
-    color: white;
-    transition: all 0.3s ease;
-  }
-
-/**--team liste--**/
-
-.teamListLeague{
-    max-width: 600px;
-  }
-
-.teamListLeague h1 {
-    color: #0e4780;
-    text-align: center;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    font-size: 1.3rem;
-    font-weight: bold;
+.generateMatch {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px;
+  max-width: 600px;
+}
+.generateMatch form {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 80%;
+  margin-bottom: 30px;
+  padding: 10px 10px;
 }
 
-.teamListLeague ul {
-    list-style: none;
-    padding: 0;
-    max-width: 600px;
-    margin: auto;
+.generateMatch form label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 10px 0px;
 }
 
-.teamListLeague ul li {
-    background: #ffffff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    font-size: 16px;
-    line-height: 1.5;
+.generateMatch h1 {
+  color: #1d29d8;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-.teamListLeague ul li span{
-    margin-right: 1rem;
-    color: blue;
+.generateMatch form p {
+  display: flex;
+  flex-direction: row;
 }
 
-.teamListLeague ul li{
-    font-size: 1.2rem;
-    font-weight: bold;
+/* --------------------update score--------------------*/
+.updateScore {
+  max-width: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 20px;
 }
 
-.teamListLeague ul li:last-child {
-    margin-bottom: 0;
+.updateScore h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: blue;
 }
 
-
-/* -- update score -- */
-
-.updateScore{
-    max-width: 700px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items:flex-start;
-    padding: 20px 20px
-}
-
-.updateScore h1{
-    font-size: 1.5rem;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.updateScore form .aller_retour .team_goals_aff{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+.updateScore form .aller_retour .team_goals_aff {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .updateScore form .aller_retour .team_goals_aff div {
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    /*width: 50%; */
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*width: 50%; */
 }
 
 .updateScore form .aller_retour input[type="number"] {
-    padding: 5px;
-    border: 1px solid #9b9393;
-    border-radius: 4px;
-    width: 40%;
+  padding: 5px;
+  border: 1px solid #9b9393;
+  border-radius: 4px;
+  width: 40%;
 }
 
 .updateScore form .aller_retour {
-    padding: 10px 10px;
-    border: 1px solid rgb(67, 56, 56);
-    border-radius: 3px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 300px;
-    font-size: 1.3rem;
-    flex-wrap: wrap;
-
+  padding: 10px 10px;
+  border: 1px solid rgb(67, 56, 56);
+  border-radius: 3px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  font-size: 1.3rem;
+  flex-wrap: wrap;
 }
 
 .updateScore form .update_button {
-    padding: 10px;
-    justify-content: flex-end; 
+  padding: 10px;
+  justify-content: flex-end;
 }
 
-.updateScore form .update_button  button {
-    padding: 10px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%; 
+.updateScore form .update_button button {
+  padding: 10px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 .updateScore form .update_button button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
-.updateScore .backdir{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 100%;
+.updateScore .backdir {
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -811,14 +693,14 @@ a:hover {
     width: 30%;
   }
 
-  .matchList ul li .matchDetails .awayTeam{
+  .matchList ul li .matchDetails .awayTeam {
     margin-left: 1rem;
   }
 
-  .matchList ul li .matchDetails .homeTeam{
+  .matchList ul li .matchDetails .homeTeam {
     margin-right: 1rem;
   }
-  
+
   .matchList ul li .matchDetails .score {
     font-size: 1rem;
   }

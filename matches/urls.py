@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import HomePageView, CreateLeagueView, ShowLeagueView, CreateTeamView, GenerateMatchesView
 from .views import MatchListView, ListAndUpdateMatchesView, LeagueStandingsView, DeleteLeagueView, TeamListView
-from .views import AllLeagueStandingsView, TeamMatchesListView
+from .views import AllLeagueStandingsView, TeamMatchesListView, DeleteTeamView
 
 urlpatterns = [
     path("", HomePageView.as_view(), name='index'),
@@ -9,6 +9,7 @@ urlpatterns = [
     path('league/<int:pk>/delete/', DeleteLeagueView.as_view(), name='deleteLeague'),
     path("all-leagues", ShowLeagueView.as_view(), name='allLeague'),
     path('create-team/<int:league_id>/', CreateTeamView.as_view(), name='createTeam'),
+    path('team/<int:pk>/delete/', DeleteTeamView.as_view(), name='deleteTeam'),
     path('teams/<int:league_id>/allTeams', TeamListView.as_view(), name='teamList'),
     path('league/<int:league_id>/generate-matches/', GenerateMatchesView.as_view(), name='generateMatches'),
     path('matches/<int:league_id>/allMatches', MatchListView.as_view(), name='matchList'),

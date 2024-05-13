@@ -5,7 +5,7 @@ from .models import Team, Match, League
 class TeamForm(forms.ModelForm):
     class Meta:
         model = Team
-        fields = ['name', 'league']
+        fields = ['name', 'name_short', 'league']
 
     def clean(self):
         cleaned_data = super().clean()

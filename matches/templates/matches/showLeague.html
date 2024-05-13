@@ -1,52 +1,47 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
-    <title>Les Leagues</title>
-  </head>
-  <body>
-    <div class="container leagueall_detail">
-      <h2>All Leagues</h2>
-      <ul>
-        {% for league in leagues %}
-        <li>
-          <div class="leaguename">
-            <span>{{ league.name|upper }}</span>
-          </div>
-          <div class="league_detail">
-            <span><a href="{% url 'createTeam' league.id %}">Add Team</a></span>
-            <span><a href="{% url 'teamList' league.id %}">List Teams</a></span>
-            <span
-              ><a href="{% url 'generateMatches' league.id %}"
-                >Generate Matches</a
-              ></span
-            >
-            <span
-              ><a href="{% url 'matchList' league.id%}">List Matches</a></span
-            >
-            <span
-              ><a href="{% url 'updateLeagueMatches' league.id %}"
-                >Update Score</a
-              ></span
-            >
-            <span
-              ><a href="{% url 'leagueStandings' league.id %}"
-                >standings</a
-              ></span
-            >
-            <span
-              ><a href="{% url 'deleteLeague' league.id %}"
-                >Delete League</a
-              ></span
-            >
-            <span><a href="{% url 'index' %}">Home Page</a></span>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </body>
-</html>
+{% extends "matches/home.html" %}
+
+{% block title %}Les Leagues{% endblock %}
+
+{% block content %}
+<div class="leagueall_detail">
+  <h2>All Leagues</h2>
+  <ul>
+    {% for league in leagues %}
+    <li>
+      <div class="leaguename">
+        <span>{{ league.name|upper }}</span>
+      </div>
+      <div class="league_detail">
+        <span><a href="{% url 'createTeam' league.id %}">Add Team</a></span>
+        <span><a href="{% url 'teamList' league.id %}">List Teams</a></span>
+        <span
+          ><a href="{% url 'generateMatches' league.id %}"
+            >Generate Matches</a
+          ></span
+        >
+        <span
+          ><a href="{% url 'matchList' league.id%}">List Matches</a></span
+        >
+        <span
+          ><a href="{% url 'updateLeagueMatches' league.id %}"
+            >Update Score</a
+          ></span
+        >
+        <span
+          ><a href="{% url 'leagueStandings' league.id %}"
+            >standings</a
+          ></span
+        >
+        <span
+          ><a href="{% url 'deleteLeague' league.id %}"
+            >Delete League</a
+          ></span
+        >
+        <span><a href="{% url 'index' %}">Home Page</a></span>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+
