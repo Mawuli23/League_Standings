@@ -71,6 +71,18 @@ class CreateTeamView(CreateView):
         return reverse('createTeam', kwargs={'league_id': self.kwargs.get('league_id')})
 
 
+class DeleteTeamView(DeleteView):
+    model = Team
+    template_name = 'matches/confirmDelete.html'
+    success_url = reverse_lazy('allLeague')
+    context_object_name = 'teams'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['teams'] = 'Delete Team'
+        return context
+
+
 class GenerateMatchesView(FormView):
     template_name = 'matches/generateMatches.html'
     form_class = MatchTypeForm

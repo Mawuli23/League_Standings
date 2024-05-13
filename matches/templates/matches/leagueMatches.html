@@ -1,37 +1,36 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
-    <title>League Matches</title>
-  </head>
-  <body>
-    <div class="container matchList">
-      <h1>Matches of {{ league.name }} league</h1>
-      <ul>
-        {% for match in matches %}
-        <li>
-          <div class="matchDetails">
-            <div class="homeTeam Team">{{ match.home_team.name }}</div>
-            <div class="score">
-              <span>{{ match.home_score }} : {{ match.away_score }}</span>
-            </div>
+{% extends "matches/home.html" %}
 
-            <div class="awayTeam Team">{{ match.away_team.name }}</div>
-          </div>
-          <div class="played">
-            {% if match.completed %}Terminé{% else %}A venir{% endif %}</div>
-        </li>
-        {% empty %}
-        <li>No matches scheduled yet.</li>
-        {% endfor %}
-      </ul>
-      <div class="backdir">
-        <a href="{% url 'allLeague' %}">Back to League Details</a>
-        <a href="{% url 'index' %}">Back to home Page</a>
+{% block title %}League Matches{% endblock %}
+
+{% block content %}
+
+<div class="matchList">
+  <h1>Matches of {{ league.name }} league</h1>
+  <ul>
+    {% for match in matches %}
+    <li>
+      <div class="matchDetails">
+        <div class="homeTeam Team">{{ match.home_team.name }}</div>
+        <div class="score">
+          <span>{{ match.home_score }} : {{ match.away_score }}</span>
+        </div>
+
+        <div class="awayTeam Team">{{ match.away_team.name }}</div>
       </div>
-    </div>
-  </body>
-</html>
+      <div class="played">
+        {% if match.completed %}Terminé{% else %}A venir{% endif %}</div>
+    </li>
+    {% empty %}
+    <li>No matches scheduled yet.</li>
+    {% endfor %}
+  </ul>
+  <div class="backdir">
+    <a href="{% url 'allLeague' %}">Back to League Details</a>
+    <a href="{% url 'index' %}">Back to home Page</a>
+  </div>
+</div>
+
+{% endblock %}
+
+
+

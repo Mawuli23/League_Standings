@@ -11,22 +11,25 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
 
+environ.Env.read_env(env_file=str(BASE_DIR / "myleague" / ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-9d74!ii#i-wddnvu7#+yvq&ck)$=&j98x%fmi)r3=rq+5f%7-1"
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', "02af-62-34-31-110.ngrok-free.app"]
-
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 # Application definition
 
@@ -36,11 +39,11 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "livereload",
     "django.contrib.staticfiles",
     "matches",
 ]
 
+#"livereload",
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -49,9 +52,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # "livereload.middleware.LiveReloadScript",
 ]
 
+#"livereload.middleware.LiveReloadScript",
 ROOT_URLCONF = "myleague.urls"
 
 TEMPLATES = [
@@ -114,11 +117,17 @@ USE_I18N = True
 
 USE_TZ = True
 
+DATE_FORMAT = 'd/m/Y'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

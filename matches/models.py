@@ -15,6 +15,10 @@ class League(models.Model):
 class Team(models.Model):
     league = models.ForeignKey(League, related_name='teams', on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
+<<<<<<< HEAD
+    name_short = models.CharField(max_length=4)
+=======
+>>>>>>> 254c3a9408f2cbc36bea8a24d8d8ee13988d94ff
     games_played = models.IntegerField(default=0)
     wins = models.IntegerField(default=0)
     losses = models.IntegerField(default=0)

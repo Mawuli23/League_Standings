@@ -1,6 +1,9 @@
 asgiref==3.8.1
-Django==5.0.4
-setuptools==68.2.2
+Django==5.0.6
+django-livereload-server==0.5.1
+python-environ==0.4.54
+setuptools==69.5.1
 sqlparse==0.5.0
+tornado==6.4
 tzdata==2024.1
-wheel==0.41.2
+wheel==0.43.0

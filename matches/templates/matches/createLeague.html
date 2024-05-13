@@ -1,14 +1,9 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
-    <title>league creation</title>
-</head>
-<body>
-    <div class="container createLeague">
+{% extends "matches/home.html" %}
+
+{% block title %}League Creation{% endblock %}
+
+{% block content %}
+<div style="margin: 10px 20px;" class="createLeague">
     <h1>Create a New League</h1>
     <form method="post" class="form-container">
         {% csrf_token %}
@@ -24,9 +19,10 @@
                 {% endfor %}
             </div>
         {% endfor %}
+        <div class="backdir">
         <button type="submit" >Create League</button>
+        <a href="{% url 'index' %}">Annuler</a>
+    </div>
     </form>
-    <a href="{% url 'index' %}">Annuler</a>
 </div>
-</body>
-</html>
+{% endblock %}

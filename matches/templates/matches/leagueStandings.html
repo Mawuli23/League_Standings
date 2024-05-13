@@ -1,114 +1,42 @@
-{% load static %}
+{% extends "matches/home.html" %} 
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
-    <title>{{ league.name }} Standings</title>
-    <!--<style>
-        /* Basic body and container styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f2f5;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-    height: 100vh;
-}
+{% block title %}{{ league.name }} Standings{%endblock %} 
 
-.container {
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    padding: 20px;
-    margin: auto;
-    width: 90%;
-    max-width: 1000px;
-}
+{% block content %}
+<div class="standings allLeague">
+  <h1>{{ league.name }} Standings</h1>
+  <table>
+    <tr>
+      <th>Team</th>
+      <th>GP</th>
+      <th>W</th>
+      <th>D</th>
+      <th>L</th>
+      <th>PTS</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>GD</th>
+    </tr>
+    {% for team in teams %}
+    <tr>
+      <td>
+        <a href="{% url 'teamMatches' league.id team.id %}">{{ team.name }}</a>
+      </td>
+      <td>{{ team.games_played }}</td>
+      <td>{{ team.wins }}</td>
+      <td>{{ team.draws }}</td>
+      <td>{{ team.losses }}</td>
+      <td><b>{{ team.points }}</b></td>
+      <td>{{ team.goals_for }}</td>
+      <td>{{ team.goals_against }}</td>
+      <td>{{ team.goal_difference }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <div class="backdir">
+    <a href="{% url 'allLeague' %}">Back to League Details</a>
+    <a href="{% url 'index' %}">Back to home Page</a>
+  </div>
+</div>
+{% endblock %}
 
-h1 {
-    text-align: center;
-    color: #2c3e50;
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
-    background-color: transparent;
-    margin-bottom: 20px;
-    display: inline-block;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* Table styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th, td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #4CAF50;
-    color: white;
-}
-
-/* Alternating row background colors */
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-tr:nth-child(odd) {
-    background-color: #ffffff;
-}
-
-/* Bold font for points column */
-td b {
-    font-weight: bold;
-}
-
-    </style>-->
-  </head>
-  <body>
-    <div class="container standings">
-      <h1>{{ league.name }} Standings</h1>
-      <a href="{% url 'allLeague' %}">Back to League Details</a>
-      <table>
-        <tr>
-          <th>Team</th>
-          <th>GP</th>
-          <th>W</th>
-          <th>D</th>
-          <th>L</th>
-          <th>PTS</th>
-          <th>GF</th>
-          <th>GA</th>
-          <th>GD</th>
-        </tr>
-        {% for team in teams %}
-        <tr>
-          <td><a href="{% url 'teamMatches' league.id team.id %}">{{ team.name }}</a></td>
-          <td>{{ team.games_played }}</td>
-          <td>{{ team.wins }}</td>
-          <td>{{ team.draws }}</td>
-          <td>{{ team.losses }}</td>
-          <td><b>{{ team.points }}</b></td>
-          <td>{{ team.goals_for }}</td>
-          <td>{{ team.goals_against }}</td>
-          <td>{{ team.goal_difference }}</td>
-        </tr>
-        {% endfor %}
-      </table>
-    </div>
-  </body>
-</html>

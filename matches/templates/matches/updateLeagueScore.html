@@ -1,52 +1,46 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'matches/css/styles.css' %}" />
-    <title>Update Match Scores</title>
-</head>
-<body>
-  <div class="container updateScore">
-    <h1>Update Matches Score for {{ league.name }} league</h1>  
-      {% for match in matches %}
+{% extends "matches/home.html" %} {% block title %}League Creation{% endblock %}
+{% block content %}
 
-      <form method="post" action="{% url 'updateLeagueMatches' league_id=league.id %}">
-        {% csrf_token %}
-        <div class="aller_retour">
-          {{form.as_p}}
-          <div class="team_goals_aff">
-            <input type="hidden" name="match_id" value="{{ match.id }}" />
+<div class="updateScore">
+  <h1>Update Matches Score for {{ league.name }}</h1>  
+    {% for match in matches %}
 
-            <div>
-              <span style="font-weight: bold;">{{ match.home_team }}</span>
+    <form method="post" action="{% url 'updateLeagueMatches' league_id=league.id %}">
+      {% csrf_token %}
+      <div class="aller_retour">
+        {{form.as_p}}
+        <div class="team_goals_aff">
+          <input type="hidden" name="match_id" value="{{ match.id }}" />
 
-              <input
-                type="number"
-                name="home_score"
-                value="{{ match.home_score }}"
-              />
-            </div>
-            <div>
-              <span>{{ match.away_team }}</span>
-              <input
-                type="number"
-                name="away_score"
-                value="{{ match.away_score }}"
-              />
-            </div>
+          <div>
+            <span style="font-weight: bold;">{{ match.home_team }}</span>
+
+            <input
+              type="number"
+              name="home_score"
+              value="{{ match.home_score }}"
+            />
           </div>
-          <div class="update_button">
-            <button type="submit">Update Score</button>
+          <div>
+            <span>{{ match.away_team }}</span>
+            <input
+              type="number"
+              name="away_score"
+              value="{{ match.away_score }}"
+            />
           </div>
         </div>
-      </form>
-      {% endfor %}
-    <div class="backdir">
-      <a href="{% url 'allLeague' %}">Back to League Details</a>
-      <a href="{% url 'index' %}">Back to home Page</a>
-    </div>
+        <div class="update_button">
+          <button type="submit">Update Score</button>
+        </div>
+      </div>
+    </form>
+    {% endfor %}
+  <div class="backdir">
+    <a href="{% url 'allLeague' %}">Back to League Details</a>
+    <a href="{% url 'index' %}">Back to home Page</a>
   </div>
-</body>
-</html>
+</div>
+
+{% endblock %}
+
