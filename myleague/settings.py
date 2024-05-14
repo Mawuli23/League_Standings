@@ -135,5 +135,5 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = '/home/'
-CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app', 'https://example.com']
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app', 'https://*.pythonanywhere.com']
 
