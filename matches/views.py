@@ -9,8 +9,9 @@ from django.forms import modelformset_factory
 import datetime
 from django.urls import reverse_lazy, reverse
 from .models import League, Team, Match
-from django.views.generic import View, ListView, TemplateView, CreateView, FormView, DeleteView, UpdateView
+from django.views.generic import View, ListView, TemplateView, CreateView, FormView, DeleteView
 from .forms import MatchTypeForm, ScoreUpdateForm, TeamForm
+from django.contrib.auth.views import LoginView
 
 
 class HomePageView(TemplateView):
@@ -243,3 +244,12 @@ class AllLeagueStandingsView(ListView):
             ).order_by('-total_points', '-goal_difference', '-total_goals_for', 'name')
 
         return leagues
+
+
+class CustomLoginView(LoginView):
+    template_name = 'login.html'
+    redirect_authenticated_user = True
+    next_page = reverse_lazy('index')
+
+    def get_success_url(self):
+        return reverse_lazy('index')
