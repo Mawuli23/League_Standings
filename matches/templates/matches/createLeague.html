@@ -5,6 +5,7 @@
 {% block content %}
 <div style="margin: 10px 20px;" class="createLeague">
     <h1>Create a New League</h1>
+    {% if user.is_authenticated %}
     <form method="post" class="form-container">
         {% csrf_token %}
         {% for field in form %}
@@ -22,7 +23,17 @@
         <div class="backdir">
         <button type="submit" >Create League</button>
         <a href="{% url 'index' %}">Annuler</a>
+
     </div>
     </form>
+    {% else %}
+        <p style="text-align: center; font-size: 1.rem; margin-top: 1rem;">Veuillez vous connecter pour creer une league.</p>
+        <div class="nonidentifier">
+            <a href="{% url 'login' %}">connecter</a>
+            <a style="color: red;" href="{% url 'index' %}">Annuler</a>
+        </div>
+        
+    {% endif %}
+    
 </div>
 {% endblock %}

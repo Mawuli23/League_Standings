@@ -4,8 +4,8 @@ from .views import MatchListView, ListAndUpdateMatchesView, LeagueStandingsView,
 from .views import AllLeagueStandingsView, TeamMatchesListView, DeleteTeamView, CustomLoginView
 
 urlpatterns = [
-    path('', CustomLoginView.as_view(), name='login'),
-    path("login/", HomePageView.as_view(), name='index'),
+    path("", HomePageView.as_view(), name='index'),
+    path('login/', CustomLoginView.as_view(), name='login'),
     path("leagues", CreateLeagueView.as_view(), name='createLeague'),
     path('league/<int:pk>/delete/', DeleteLeagueView.as_view(), name='deleteLeague'),
     path("all-leagues", ShowLeagueView.as_view(), name='allLeague'),
