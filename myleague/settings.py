@@ -29,7 +29,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", False)
 
-ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
+ALLOWED_HOSTS = ['localhost','127.0.0.1','cf81-62-34-31-110.ngrok-free.app']#env.list("ALLOWED_HOSTS")
 
 # Application definition
 
@@ -133,3 +133,7 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = '/home/'
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app', 'https://example.com']
+

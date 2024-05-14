@@ -146,6 +146,21 @@ footer {
   color: #000;
 }
 
+.createLeague .nonidentifier{
+  display: flex;
+  justify-content: space-between;
+}
+
+.createLeague .nonidentifier a{
+  border: 1px solid blue;
+  padding: 1rem 1.2rem;
+  border-radius: 4px;
+}
+
+.createLeague .nonidentifier a{
+  text-decoration: none;
+}
+
 /* ----------------- create a league----------------------*/
 
 .createLeague {
@@ -650,6 +665,37 @@ footer {
 
 .updateScore .backdir {
   width: 100%;
+}
+
+/*-------------------login--------------------*/
+.container .login-container {
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container .login-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container .login-container input[type="text"], input[type="password"] {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+.container .login-container button {
+  padding: 10px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

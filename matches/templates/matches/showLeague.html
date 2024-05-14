@@ -12,31 +12,32 @@
         <span>{{ league.name|upper }}</span>
       </div>
       <div class="league_detail">
-        <span><a href="{% url 'createTeam' league.id %}">Add Team</a></span>
+        
+        {% if user.is_authenticated %}<span><a href="{% url 'createTeam' league.id %}">Add Team</a></span>{% endif %}
         <span><a href="{% url 'teamList' league.id %}">List Teams</a></span>
-        <span
+        {% if user.is_authenticated %}<span
           ><a href="{% url 'generateMatches' league.id %}"
             >Generate Matches</a
           ></span
-        >
+        >{% endif %}
         <span
           ><a href="{% url 'matchList' league.id%}">List Matches</a></span
         >
-        <span
+        {% if user.is_authenticated %}<span
           ><a href="{% url 'updateLeagueMatches' league.id %}"
             >Update Score</a
           ></span
-        >
+        >{% endif %}
         <span
           ><a href="{% url 'leagueStandings' league.id %}"
             >standings</a
           ></span
         >
-        <span
+        {% if user.is_authenticated %}<span
           ><a href="{% url 'deleteLeague' league.id %}"
             >Delete League</a
           ></span
-        >
+        >{% endif %}
         <span><a href="{% url 'index' %}">Home Page</a></span>
       </div>
     </li>
@@ -44,4 +45,3 @@
   </ul>
 </div>
 {% endblock %}
-

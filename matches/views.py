@@ -247,9 +247,12 @@ class AllLeagueStandingsView(ListView):
 
 
 class CustomLoginView(LoginView):
-    template_name = 'login.html'
+    template_name = 'matches/login.html'
     redirect_authenticated_user = True
-    next_page = reverse_lazy('index')
+    next_page = reverse_lazy('login')
 
     def get_success_url(self):
-        return reverse_lazy('index')
+        if self.request.user.is_authenticated:
+            return reverse_lazy('index')
+        return reverse_lazy('login')
+    
