@@ -1,10 +1,11 @@
 from django.urls import path
 from .views import HomePageView, CreateLeagueView, ShowLeagueView, CreateTeamView, GenerateMatchesView
 from .views import MatchListView, ListAndUpdateMatchesView, LeagueStandingsView, DeleteLeagueView, TeamListView
-from .views import AllLeagueStandingsView, TeamMatchesListView, DeleteTeamView
+from .views import AllLeagueStandingsView, TeamMatchesListView, DeleteTeamView, CustomLoginView
 
 urlpatterns = [
-    path("", HomePageView.as_view(), name='index'),
+    path('', CustomLoginView.as_view(), name='login'),
+    path("login/", HomePageView.as_view(), name='index'),
     path("leagues", CreateLeagueView.as_view(), name='createLeague'),
     path('league/<int:pk>/delete/', DeleteLeagueView.as_view(), name='deleteLeague'),
     path("all-leagues", ShowLeagueView.as_view(), name='allLeague'),
